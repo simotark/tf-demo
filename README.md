@@ -1,4 +1,8 @@
 # tf-demo
-terraform demo
 
-this is where i try out some terraform
+Demo Terraform in Azure
+
+Preflight: 
+- [ ] Check terraform version 
+- [ ] Check az cli version 
+- [ ] Check Azure credentials
