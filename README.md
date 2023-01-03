@@ -3,6 +3,6 @@
 Demo Terraform in Azure
 
 Preflight: 
-- [ ] Check terraform version 
-- [ ] Check az cli version 
+- [x] Check terraform version 
+- [x] Check az cli version 
 - [ ] Check Azure credentials
