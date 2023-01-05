@@ -8,13 +8,16 @@ terraform {
   }
 }
 
+# variable test
+variable "my_variable" {}
+
 # this tidbit needs to exist, lest an error occurreth 
 provider "azurerm" {
   features {}
 }
 
 resource "azurerm_resource_group" "rg" {
-  name     = "my-resource-group"
+  name     = var.my_variable
   location = "northeurope"
   tags = {
     environment = "dev"
