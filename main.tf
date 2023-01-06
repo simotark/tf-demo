@@ -8,19 +8,24 @@ terraform {
   }
 }
 
-# variable test
-variable "my_variable" {}
-
 # this tidbit needs to exist, lest an error occurreth 
 provider "azurerm" {
   features {}
 }
 
+variable "obj_names" {
+  type = map(any)
+  default = {
+    "rg"  = "my_resource_group"
+    "env" = "dev"
+  }
+}
+
 resource "azurerm_resource_group" "rg" {
-  name     = var.my_variable
+  name     = var.obj_names["rg"]
   location = "northeurope"
   tags = {
-    environment = "dev"
+    environment = var.obj_names["env"]
     source      = "Terraform"
     owner       = "simo"
   }
