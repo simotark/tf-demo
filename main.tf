@@ -13,14 +13,6 @@ provider "azurerm" {
   features {}
 }
 
-variable "obj_names" {
-  type = map(any)
-  default = {
-    "rg"  = "my_resource_group"
-    "env" = "dev"
-  }
-}
-
 resource "azurerm_resource_group" "rg" {
   name     = var.obj_names["rg"]
   location = "northeurope"
