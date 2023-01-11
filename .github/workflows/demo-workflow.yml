@@ -22,13 +22,17 @@ jobs:
         run: terraform fmt
         shell: bash
 
-      - name: Terraform Plan
-        run: |
-          terraform plan -input=false -no-color -out tf.plan
-        shell: bash
 
-      - name: Terraform Show
-        run: terraform show -no-color tf.plan 2>&1 > /tmp/plan.txt
-        shell: bash
+
+## need azure credentials for these
+
+#      - name: Terraform Plan
+#        run: |
+#          terraform plan -input=false -no-color -out tf.plan
+#        shell: bash
+
+#      - name: Terraform Show
+#        run: terraform show -no-color tf.plan 2>&1 > /tmp/plan.txt
+#        shell: bash
 
       - run: echo "This job's status is ${{ job.status }}."
