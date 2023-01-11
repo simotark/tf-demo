@@ -1,0 +1,38 @@
+name: GitHub Actions Demo
+run-name: ${{ github.actor }} is testing
+on: [push]
+jobs:
+  Tests:
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo "The job was automatically triggered by a ${{ github.event_name }} event."
+      - run: echo "This job is now running on a ${{ runner.os }}."
+
+      - name: Check out repository code
+        uses: actions/checkout@v3
+
+      - name: Setup Terraform
+        uses: hashicorp/setup-terraform@v2
+
+      - name: Terraform Init
+        run: terraform init
+        shell: bash
+
+      - name: Terraform Format
+        run: terraform fmt
+        shell: bash
+
+
+
+## need azure credentials for these
+
+#      - name: Terraform Plan
+#        run: |
+#          terraform plan -input=false -no-color -out tf.plan
+#        shell: bash
+
+#      - name: Terraform Show
+#        run: terraform show -no-color tf.plan 2>&1 > /tmp/plan.txt
+#        shell: bash
+
+      - run: echo "This job's status is ${{ job.status }}."

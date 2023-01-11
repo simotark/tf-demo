@@ -1,2 +1,9 @@
 # tf-demo
-terraform demo
+
+Demo Terraform in Azure
+
+Figure out:
+- Secrets
+- Output
+- Pipeline
+- Branching
