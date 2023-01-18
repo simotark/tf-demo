@@ -23,6 +23,6 @@ resource "azurerm_resource_group" "rg" {
   }
 }
 
-output "resource group id" {
+output "rg_id" {
   value = azurerm_resource_group.rg.id
 }
