@@ -22,3 +22,7 @@ resource "azurerm_resource_group" "rg" {
     owner       = "simo"
   }
 }
+
+output "resource group id" {
+  value = azurerm_resource_group.rg.id
+}
