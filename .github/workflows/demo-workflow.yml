@@ -14,15 +14,17 @@ jobs:
       - name: Setup Terraform
         uses: hashicorp/setup-terraform@v2
 
-      - name: Terraform Init
+      - name: Terraform initialization
         run: terraform init
         shell: bash
 
-      - name: Terraform Format
+      - name: Terraform formatting
         run: terraform fmt
         shell: bash
 
-
+      - name: Terraform validation
+        run: terraform fmt
+        shell: bash
 
 ## need azure credentials for these
 
