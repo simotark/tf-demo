@@ -13,16 +13,10 @@ provider "azurerm" {
   features {}
 }
 
-resource "azurerm_resource_group" "rg" {
-  name     = var.obj_names["rg"]
-  location = "northeurope"
-  tags = {
-    environment = var.obj_names["env"]
-    source      = "Terraform"
-    owner       = "simo"
-  }
+module "res group" {
+  source = "./modules/resource_group/main.tf"
+  
 }
-
 output "rg_id" {
   value = azurerm_resource_group.rg.id
 }
