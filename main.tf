@@ -13,7 +13,7 @@ provider "azurerm" {
   features {}
 }
 
-module "res group" {
+module "azurerm_resource_group" {
   source = "./modules/resource_group/main.tf"
   
 }
