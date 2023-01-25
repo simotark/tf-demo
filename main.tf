@@ -14,7 +14,8 @@ provider "azurerm" {
 }
 
 resource "azurerm_resource_group" "rg" {
-  name     = var.obj_names["rg"]
+  #  name     = var.obj_names["rg"]
+  name     = var.resource_group
   location = "northeurope"
   tags = {
     environment = var.obj_names["env"]
@@ -26,13 +27,19 @@ output "rg_id" {
   value = azurerm_resource_group.rg.id
 }
 
-resource "azurerm_virtual_network" "name" {
-  name                = "network makes the dream work"
+resource "azurerm_virtual_network" "vnet" {
+  name                = "network_makes_the_dream_work"
   location            = "northeurope"
-  resource_group_name = "azurerm_resource_group.rg"
+  resource_group_name = var.resource_group
   address_space       = ["10.0.0.0/16"]
 
   depends_on = [
     azurerm_resource_group.rg
   ]
 }
+
+# works, but outputs block plan
+#resource "local_file" "output" {
+#  content  = azurerm_virtual_network.vnet.name
+#  filename = "outputs.tf"
+#}
