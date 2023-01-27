@@ -38,3 +38,7 @@ jobs:
 #        shell: bash
 
       - run: echo "This job's status is ${{ job.status }}."
+
+# make some merge to main on push thingy
+#  Merging:
+#    runs-on: ubuntu-latest
