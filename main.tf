@@ -19,7 +19,7 @@ resource "azurerm_resource_group" "rg" {
   location = "northeurope"
   tags = {
     environment = var.obj_names["env"]
-    source      = "Terraform"
+    source      = local.lahde
     owner       = "simo"
   }
 }

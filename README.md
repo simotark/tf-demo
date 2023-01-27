@@ -2,10 +2,12 @@
 
 Demo Terraform in Azure
 
-Figure out:
-- Depends on
-- Variables/how to refer to stuff
-- Secrets
-- Output
-- Pipeline
-- Branching
+Ideas:
+- Multiple providers
+- Statefile and other files in-depth
+- Modules
+- Practical example
+- QA and testing
+- Terragrunt and other extensions
+- Secret management
+- Pipelines & branches

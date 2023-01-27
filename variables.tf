@@ -9,3 +9,7 @@ variable "resource_group" {
   type    = string
   default = "my_resource_group"
 }
+
+locals {
+  lahde = "Terraform"
+}
