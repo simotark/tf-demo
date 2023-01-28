@@ -42,7 +42,6 @@ jobs:
 # make some merge to main on push thingy
   Merging:
     needs: [Tests]
-    if: ${{ job.status }} == 'success'
     runs-on: ubuntu-latest
     steps: 
     - uses: actions/checkout@v3
