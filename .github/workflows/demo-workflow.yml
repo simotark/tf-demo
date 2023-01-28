@@ -43,3 +43,9 @@ jobs:
   Merging:
     if: ${{ job.status }} == 'success'
     runs-on: ubuntu-latest
+    steps: 
+    - uses: actions/checkout@v3
+    - name: pull-request
+      uses: repo-sync/pull-request@v2
+      with:
+        destination_branch: "main"
