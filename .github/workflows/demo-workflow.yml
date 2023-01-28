@@ -37,8 +37,9 @@ jobs:
 #        run: terraform show -no-color tf.plan 2>&1 > /tmp/plan.txt
 #        shell: bash
 
-      - run: echo "This job's status is ${{ job.status }}."
+      - run: echo "Terraform validation status is ${{ job.status }}."
 
 # make some merge to main on push thingy
-#  Merging:
-#    runs-on: ubuntu-latest
+  Merging:
+    if: ${{ job.status }} == 'success'
+    runs-on: ubuntu-latest
