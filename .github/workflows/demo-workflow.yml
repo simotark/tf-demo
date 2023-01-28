@@ -57,9 +57,10 @@ jobs:
     needs: [Pull_request]
     runs-on: ubuntu-latest
     steps: 
-    - uses: devmasx/merge-branch@master
-        with:
-          type: now
-          from_branch: testing
-          target_branch: main
-          github_token: ${{ github.token }}
+      - uses: actions/checkout@master
+      - uses: devmasx/merge-branch@master
+          with:
+            type: now
+            from_branch: testing
+            target_branch: main
+            github_token: ${{ github.token }}
