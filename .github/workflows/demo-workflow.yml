@@ -1,6 +1,9 @@
 name: GitHub Actions Demo
 run-name: ${{ github.actor }} is testing
-on: [push]
+on: 
+  push: 
+    branches: 
+      - 'testing'
 jobs:
   Tests:
     runs-on: ubuntu-latest
@@ -14,15 +17,17 @@ jobs:
       - name: Setup Terraform
         uses: hashicorp/setup-terraform@v2
 
-      - name: Terraform Init
+      - name: Terraform initialization
         run: terraform init
         shell: bash
 
-      - name: Terraform Format
+      - name: Terraform formatting
         run: terraform fmt
         shell: bash
 
-
+      - name: Terraform validation
+        run: terraform fmt
+        shell: bash
 
 ## need azure credentials for these
 
@@ -35,4 +40,27 @@ jobs:
 #        run: terraform show -no-color tf.plan 2>&1 > /tmp/plan.txt
 #        shell: bash
 
-      - run: echo "This job's status is ${{ job.status }}."
+      - run: echo "Terraform validation status is ${{ job.status }}."
+
+# make some merge to main on push thingy
+  Pull_Request:
+    needs: [Tests]
+    runs-on: ubuntu-latest
+    steps: 
+    - uses: actions/checkout@v3
+    - name: pull-request
+      uses: repo-sync/pull-request@v2
+      with:
+        destination_branch: "main"
+  # https://www.jessesquires.com/blog/2021/10/17/github-actions-workflows-for-automatic-rebasing-and-merging/
+  Merge: 
+    needs: [Pull_request]
+    runs-on: ubuntu-latest
+    steps: 
+      - uses: actions/checkout@master
+      - uses: devmasx/merge-branch@master
+        with:
+          type: now
+          from_branch: testing
+          target_branch: main
+          github_token: ${{ github.token }}
