@@ -1,10 +1,10 @@
 name: GitHub Actions Demo
-run-name: ${{ github.actor }} is testing
+run-name: ${{ github.actor }} is pushing to testing
 on: 
   push: 
     branches: 
       - 'testing'
-      
+
 jobs:
   Tests:
     runs-on: ubuntu-latest
