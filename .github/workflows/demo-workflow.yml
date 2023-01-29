@@ -4,6 +4,7 @@ on:
   push: 
     branches: 
       - 'testing'
+      
 jobs:
   Tests:
     runs-on: ubuntu-latest
@@ -42,7 +43,9 @@ jobs:
 
       - run: echo "Terraform validation status is ${{ job.status }}."
 
-# make some merge to main on push thingy
+## if tf file is valid, merge it to main
+## probably add more qa/testing above to make this reasonable
+
   Pull_Request:
     needs: [Tests]
     runs-on: ubuntu-latest
@@ -52,7 +55,7 @@ jobs:
       uses: repo-sync/pull-request@v2
       with:
         destination_branch: "main"
-  # https://www.jessesquires.com/blog/2021/10/17/github-actions-workflows-for-automatic-rebasing-and-merging/
+
   Merge: 
     needs: [Pull_request]
     runs-on: ubuntu-latest
